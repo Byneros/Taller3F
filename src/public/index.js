@@ -1,5 +1,6 @@
 // Importamos la biblioteca React desde el módulo 'react'
 // Esto es necesario para escribir componentes en JSX y manejar su renderizado y actualización.
+import '../styles/global.scss';
 import React from 'react';
 // Importamos ReactDOM desde el módulo 'react-dom'
 // ReactDOM proporciona métodos específicos del DOM que pueden ser utilizados en la raíz de la aplicación.
