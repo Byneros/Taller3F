@@ -11,3 +11,4 @@ import App from '../components/App/App';
 // El primer argumento es el componente de React que queremos renderizar y el segundo argumento es el elemento del DOM donde queremos renderizar el componente.
 // Aquí, asumimos que ya hay un elemento con el id 'app' en el HTML de la página.
 ReactDOM.render(<App />, document.getElementById('app'));
+console.log(Error);
