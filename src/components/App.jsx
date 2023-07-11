@@ -1,6 +1,7 @@
 // Importamos la biblioteca React desde el módulo 'react'
 // Esto es necesario para escribir componentes en JSX y manejar su renderizado y actualización
 import React from 'react';
+
 import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
