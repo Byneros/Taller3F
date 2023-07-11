@@ -1,8 +1,9 @@
 // Importamos la biblioteca React desde el módulo 'react'
 // Esto es necesario para escribir componentes en JSX y manejar su renderizado y actualización
 import React from 'react';
-import Button from '@component/Button/Button.jsx';
-import Homepage
+/**import Button from '@component/Button/Button.jsx';
+//import Homepage*/
+
 // Declaramos una constante llamada `App`. Esta constante es una función de flecha que no recibe ningún argumento.
 // Las funciones de flecha son una forma concisa de declarar funciones en JavaScript.
 const App = () => {
