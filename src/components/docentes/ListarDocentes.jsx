@@ -7,7 +7,7 @@ const ListarDocentes = () =>  {
     
     return (
         <div>
-            ListarDocentes
+            <h2>Listar Docentes</h2>
         </div>
     );
 }
