@@ -19,7 +19,7 @@ module.exports = {
             '@styles': path.resolve(__dirname, 'src/styles'),
             // Otros alias de rutas...
         },
-        extensions: ['.js', '.jsx'
+        extensions: ['.js', '.jsx'],
     },
     module: {
         rules: [
