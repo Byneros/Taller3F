@@ -12,6 +12,7 @@ const CrearDocentes = () => {
     };
 
     return (
+        
         <Form
             name="basic"
             labelCol={{ span: 8 }}
@@ -19,9 +20,11 @@ const CrearDocentes = () => {
             initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
+            
         >
+            <h2>Crear Docente</h2>
             <Form.Item
-                label="Title"
+                label="Nombre"
                 name="title"
                 rules={[{ required: true, message: 'Please input the title!' }]}
             >
@@ -33,7 +36,7 @@ const CrearDocentes = () => {
                 name="description"
                 rules={[{ required: true, message: 'Please input the description!' }]}
             >
-                <Input.TextArea />
+                <Input  />
             </Form.Item>
 
             <Form.Item
