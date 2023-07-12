@@ -22,9 +22,9 @@ const CrearDocentes = () => {
             onFinishFailed={onFinishFailed}
             
         >
-            <h2>Crear Docente</h2>
+            <h2>Crear tarea</h2>
             <Form.Item
-                label="Nombre"
+                label="Title"
                 name="title"
                 rules={[{ required: true, message: 'Please input the title!' }]}
             >
