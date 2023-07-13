@@ -2,11 +2,11 @@
 import { PlusCircleOutlined, UserOutlined, UnorderedListOutlined } from
     "@ant-design/icons";
 import ListarDocentes from '../components/docentes/ListarDocentes';
-import CrearDocentes from '../components/docentes/CrearDocentes';
+import CrearTareas from '../components/docentes/CrearTareas';
 const routes = [
     {
         path: '/crear',
-        component: CrearDocentes,
+        component: CrearTareas,
         title: 'Crear Docentes',
         icon: PlusCircleOutlined
     },

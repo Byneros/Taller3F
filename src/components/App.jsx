@@ -7,6 +7,7 @@ import ContentDisplay from '@layout/ContentDisplay';
 
 const { Header, Content, Footer } = Layout;
 
+
 const App = () =>  {
     const { token: { colorBgContainer } } = theme.useToken();
 
