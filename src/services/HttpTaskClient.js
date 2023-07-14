@@ -1,7 +1,7 @@
 import HttpClient from './HttpClient';
 class HttpTaskClient extends HttpClient {
     constructor() {
-        super('http://localhost:3000');
+        super('https://sari-snapper.cyclic.app');
     }
     createTask(taskData) {
         return this.post('/Tarea', taskData);
