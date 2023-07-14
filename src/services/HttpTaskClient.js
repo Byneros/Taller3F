@@ -8,25 +8,25 @@ class HttpTaskClient extends HttpClient {
     }
     getTasks() {
 
-        return this.get('/tareas');
+        return this.get('/Tarea');
     }
     getTask(id) {
-        return this.get(`/tareas/${id}`);
+        return this.get(`/Tarea/${id}`);
     }
     updateTask(id, taskData) {
-        return this.put(`/tareas/${id}`, taskData);
+        return this.put(`/Tarea/${id}`, taskData);
     }
     deleteTask(id) {
-        return this.delete(`/tareas/${id}`);
+        return this.delete(`/Tarea/${id}`);
     }
     startTask(id) {
-        return this.post(`/tareas/${id}/iniciar`);
+        return this.post(`/Tarea/${id}/iniciar`);
     }
     finishTask(id) {
-        return this.post(`/tareas/${id}/finalizar`);
+        return this.post(`/Tarea/${id}/finalizar`);
     }
     declineTask(id) {
-        return this.post(`/tareas/${id}/declinar`);
+        return this.post(`/Tarea/${id}/declinar`);
     }
 }
 export default HttpTaskClient;
