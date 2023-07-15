@@ -28,5 +28,6 @@ class HttpTaskClient extends HttpClient {
     declineTask(id) {
         return this.post(`/Tarea/${id}/declinar`);
     }
+    
 }
 export default HttpTaskClient;

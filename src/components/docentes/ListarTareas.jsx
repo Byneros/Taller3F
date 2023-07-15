@@ -1,5 +1,6 @@
 // components/TasksList.jsx
-import React, {useTasks} from 'react';
+import React from 'react';
+import { useTasks } from '../../services/useTask';
 
 const ListarTarea = () => {
     const { data: tasks, isLoading, isError, error } = useTasks();
