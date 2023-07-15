@@ -1,4 +1,3 @@
-// components/TasksList.jsx
 import React from 'react';
 import { useTasks } from '../../services/useTask';
 
@@ -6,7 +5,7 @@ const ListarTarea = () => {
     const { data: tasks, isLoading, isError, error } = useTasks();
 
     if (isLoading) {
-        return <span>Cargando...</span>;
+        return <span> Cargando...</span>;
     }
 
     if (isError) {
@@ -15,9 +14,9 @@ const ListarTarea = () => {
 
     return (
         <div>
-            <h1>Lista de Tareas</h1>
+            <h2>Lista de Tareas</h2>
             {tasks.map((task) => (
-                <div key={task.id}>
+                <div key={task._id}>
                     <h2>{task.nombre}</h2>
                     <p>{task.descripcion}</p>
                     <p>{task.estado}</p>
