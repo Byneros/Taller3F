@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Form, Input, Button, Select, DatePicker } from 'antd';
-import HttpClient from '../../services/HttpTaskClient'
+import HttpClient from '../../services/HttpTaskClient';
 
 const { Option } = Select;
-
-
 const CrearTareas = () => {
-    const [variable, setVariable] = useState(1);
     const queryClient = new HttpClient();
-
-    useEffect(() => {
-        console.log('variable', variable);
-    }, [variable]);
+    const [form] = Form.useForm(); // Utiliza el hook useForm para obtener la instancia del formulario
 
     const onFinish = (values) => {
         console.log('Success:', values);
-        queryClient.createTask(values).then(data => {
-            console.log(data);
-            form.resetFields();
-        })
-            .catch(error => {
-                console.log(error)
+        queryClient
+            .createTask(values)
+            .then((data) => {
+                console.log(data);
+                form.resetFields(); // Limpia los campos del formulario después de enviar los datos
+            })
+            .catch((error) => {
+                console.log(error);
             });
     };
 
@@ -29,12 +25,8 @@ const CrearTareas = () => {
     };
 
     return (
-        /**  <><Button type="primary" onClick={()=> setVariable(variable + 1) }>
-         Sumar {variable}
-         </Button>
-         */
         <Form
-          
+            form={form} // Asigna la instancia del formulario al componente Form
             name="basic"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
@@ -84,8 +76,7 @@ const CrearTareas = () => {
                 </Button>
             </Form.Item>
         </Form>
-        // </>
     );
-}
+};
 
 export default CrearTareas;
