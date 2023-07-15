@@ -1,4 +1,4 @@
-import React,{ useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, Select, DatePicker } from 'antd';
 import HttpClient from '../../services/HttpTaskClient'
 
@@ -8,18 +8,20 @@ const { Option } = Select;
 const CrearTareas = () => {
     const [variable, setVariable] = useState(1);
     const queryClient = new HttpClient();
+
     useEffect(() => {
         console.log('variable', variable);
-      }, [variable]);
+    }, [variable]);
 
     const onFinish = (values) => {
         console.log('Success:', values);
         queryClient.createTask(values).then(data => {
-            console.log(data)
+            console.log(data);
+            form.resetFields();
         })
-        .catch( error => {
-            console.log(error)
-        });
+            .catch(error => {
+                console.log(error)
+            });
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -27,18 +29,18 @@ const CrearTareas = () => {
     };
 
     return (
-       /**  <><Button type="primary" onClick={()=> setVariable(variable + 1) }>
-        Sumar {variable}
-        </Button>
-        */
+        /**  <><Button type="primary" onClick={()=> setVariable(variable + 1) }>
+         Sumar {variable}
+         </Button>
+         */
         <Form
+          
             name="basic"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
             initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
-            
         >
             <h2>Crear tarea</h2>
             <Form.Item
@@ -54,8 +56,8 @@ const CrearTareas = () => {
                 name="description"
                 rules={[{ required: true, message: 'Please input the description!' }]}
             >
-                <Input  />
-            </Form.Item> 
+                <Input />
+            </Form.Item>
             <Form.Item
                 label="Status"
                 name="estado"
@@ -82,7 +84,7 @@ const CrearTareas = () => {
                 </Button>
             </Form.Item>
         </Form>
-    // </>
+        // </>
     );
 }
 

@@ -1,9 +1,33 @@
 import React from 'react';
 import { useTasks } from '../../services/useTask';
+import { Table } from 'antd';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-const queryClient = new QueryClient();
+const columns = [
+    {
+      title: 'Nombre',
+      dataIndex: 'nombre',
+      key: 'nombre',
+    },
+    {
+      title: 'Descripción',
+      dataIndex: 'description',
+      key: 'descripcion',
+    },
+    {
+      title: 'Estado',
+      dataIndex: 'estado',
+      key: 'estado',
+    },
+    {
+      title: 'Fecha Límite',
+      dataIndex: 'fechaLimite',
+      key: 'fechalimite',
+    },
+  ];
+  
 
+const queryClient = new QueryClient();
 const ListarTarea = () => {
   const { data: tasks, isLoading, isError, error } = useTasks();
 
@@ -18,19 +42,13 @@ const ListarTarea = () => {
   return (
     <div>
       <h2>Lista de Tareas</h2>
-      {tasks.map((task) => (
-        <div key={task._id}>
-          <h2>{task.nombre}</h2>
-          <p>{task.descripcion}</p>
-          <p>{task.estado}</p>
-          <p>{task.fechalimite}</p>
-        </div>
-      ))}
+      <Table dataSource={tasks} columns={columns} />
     </div>
   );
 };
 
-const App = () => {
+
+const ListarTareas = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ListarTarea />
@@ -38,4 +56,5 @@ const App = () => {
   );
 };
 
-export default App;
+
+export default ListarTareas;
