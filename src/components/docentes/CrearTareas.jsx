@@ -52,7 +52,7 @@ const CrearTareas = () => {
             </Form.Item>
 
             <Form.Item
-                label="Description"
+                label="Descripcion"
                 name="description"
                 rules={[{ required: true, message: 'Please input the description!' }]}
             >

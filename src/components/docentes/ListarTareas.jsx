@@ -12,7 +12,7 @@ const columns = [
     {
       title: 'Descripción',
       dataIndex: 'description',
-      key: 'descripcion',
+      key: 'Descripción',
     },
     {
       title: 'Estado',
