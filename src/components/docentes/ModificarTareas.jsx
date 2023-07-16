@@ -17,7 +17,7 @@ const ModificarTareas = () => {
                 form.resetFields(); // Limpia los campos del formulario después de enviar los datos
             })
             .catch((error) => {
-                console.log(error);
+                console.log(error)
             });
     };
 
