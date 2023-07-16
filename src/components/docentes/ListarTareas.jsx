@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTasks } from '../../services/useTask';
+import { useTasks } from '../../services/useCreateTask';
 import { Table } from 'antd';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -10,9 +10,9 @@ const columns = [
       key: 'nombre',
     },
     {
-      title: 'Descripción',
-      dataIndex: 'description',
-      key: 'Descripción',
+      title: 'Id de Tarea',
+      dataIndex: 'id',
+      key: 'id',
     },
     {
       title: 'Estado',
