@@ -11,14 +11,14 @@ const getTasks = async () => {
     return await taskClient.getTasks();
 }
 
-const getTask = async (id) => {
-    return await  taskClient.getTask(id);
-}
-
 export const useTasks = () => {
     return useQuery('tasks', getTasks);
   };
   
+const getTask = async (id) => {
+    return await  taskClient.getTask(id);
+}
+
   export const useTask = (id) => {
     return useQuery(['task', id], () => getTask(id)); // Utilizar el ID como parte de la clave de consulta
   };

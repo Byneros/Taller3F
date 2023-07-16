@@ -1,3 +1,4 @@
+import { Descriptions } from 'antd';
 import HttpClient from './HttpClient';
 class HttpTaskClient extends HttpClient {
     constructor() {

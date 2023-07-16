@@ -4,6 +4,8 @@ import { PlusCircleOutlined, UserOutlined, UnorderedListOutlined, EditOutlined, 
 import CrearTareas from '../components/docentes/CrearTareas';
 import ModificarTareas from '../components/docentes/ModificarTareas';
 import ListarTareas from '../components/docentes/ListarTareas';
+import Inicio from '../components/docentes/Inicio';
+
 const routes = [
     {
         path: '/crear',
@@ -24,10 +26,11 @@ const routes = [
         icon: UnorderedListOutlined
     },
     {
-        path: '*',
-        component: () => null,
+        path: '/Inicio',
+        component: Inicio,
         title: 'Inicio',
-        icon: UserOutlined
+        icon: UserOutlined,
+        
     }
 ];
 export default routes;

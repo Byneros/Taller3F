@@ -1,41 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Input, Button, Select, DatePicker } from 'antd';
 import HttpClient from '../../services/HttpTaskClient';
+import { useTask } from '../../services/useCreateTask';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { useSubmit } from 'react-router-dom';
 
 const { Option } = Select;
-
 const ModificarTareas = () => {
     const queryClient = new HttpClient();
-    const [form] = Form.useForm();
-    const [taskData, setTaskData] = useState({
-        nombre: '',
-        description: '',
-        estado: '',
-        fechaLimite: null,
-    });
+    const [form] = Form.useForm(); // Utiliza el hook useForm para obtener la instancia del formulario
 
     const onFinish = (values) => {
         console.log('Success:', values);
+        queryClient.createTask(values).then((data) => {
+                console.log(data);
+                form.resetFields(); // Limpia los campos del formulario después de enviar los datos
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    const submit = () => {
+        const id = form.getFieldValue('id');
         queryClient
-            .getTask(values.id) // Realiza la búsqueda de la tarea por ID
+            .getTask(id) // Realiza la búsqueda de la tarea por ID
             .then((data) => {
                 console.log(data);
                 if (data) {
-                    setTaskData({
+                    form.setFieldsValue({
                         nombre: data.nombre,
                         description: data.description,
                         estado: data.estado,
                         fechaLimite: data.fechaLimite,
                     });
-                    form.setFieldsValue(data); // Establece los valores de los campos del formulario con los datos de la tarea
                 } else {
-                    // Si no se encuentra la tarea, se limpian los campos del formulario
-                    setTaskData({
-                        nombre: '',
-                        description: '',
-                        estado: '',
-                        fechaLimite: null,
-                    });
                     form.resetFields(); // Limpia los campos del formulario
                 }
             })
@@ -46,14 +45,10 @@ const ModificarTareas = () => {
 
     const onDelete = () => {
         // Lógica para eliminar la tarea
-        // Utiliza los valores actuales en el estado taskData
-        // Puedes hacer la llamada a la función correspondiente en HttpClient
     };
 
     const onUpdate = () => {
         // Lógica para guardar los cambios en la tarea
-        // Utiliza los valores actuales en el estado taskData
-        // Puedes hacer la llamada a la función correspondiente en HttpClient
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -62,39 +57,40 @@ const ModificarTareas = () => {
 
     return (
         <Form
-            form={form}
+            form={form} // Asigna la instancia del formulario al componente Form
             name="basic"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
-            initialValues={taskData}
+            initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
         >
-            <h2>Modificar tarea</h2>
+            <h2>Modificar Tareas</h2>
+
             <Form.Item
-                label="ID de Tarea"
+                label="Id de Tareas"
                 name="id"
-                rules={[{ required: true, message: 'Please input the ID!' }]}
+                rules={[{ required: true, message: 'Please input the id!' }]}
             >
                 <Input />
             </Form.Item>
 
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                <Button type="primary" htmlType="submit">
-                    Consultar
+                <Button type="primary" onClick={submit}>
+                    Submit
                 </Button>
             </Form.Item>
 
             <Form.Item
-                label="Nombre"
+                label="Title"
                 name="nombre"
-                rules={[{ required: true, message: 'Please input the name!' }]}
+                rules={[{ required: true, message: 'Please input the title!' }]}
             >
                 <Input />
             </Form.Item>
 
             <Form.Item
-                label="Descripción"
+                label="Descripcion"
                 name="description"
                 rules={[{ required: true, message: 'Please input the description!' }]}
             >
@@ -102,7 +98,7 @@ const ModificarTareas = () => {
             </Form.Item>
 
             <Form.Item
-                label="Estado"
+                label="Status"
                 name="estado"
                 rules={[{ required: true, message: 'Please select the status!' }]}
             >
@@ -114,7 +110,7 @@ const ModificarTareas = () => {
             </Form.Item>
 
             <Form.Item
-                label="Fecha límite"
+                label="Due Date"
                 name="fechaLimite"
                 rules={[{ required: true, message: 'Please select the due date!' }]}
             >
@@ -123,10 +119,11 @@ const ModificarTareas = () => {
 
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                 <Button type="primary" onClick={onDelete}>
-                    Eliminar
+                    Delete
                 </Button>
+
                 <Button type="primary" onClick={onUpdate}>
-                    Guardar
+                    Update
                 </Button>
             </Form.Item>
         </Form>
